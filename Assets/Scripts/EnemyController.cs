@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour {
 
     public float _currentTime;
 
+    public bool spawn = true;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -21,7 +23,7 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
         _currentTime += Time.deltaTime;
 
-        if(_currentTime > _enemySpawnTime)
+        if(_currentTime > _enemySpawnTime && spawn)
         {
             _currentTime = 0f;
             SpawnNewEnemyLine();
@@ -34,6 +36,14 @@ public class EnemyController : MonoBehaviour {
         for(int i = 0; i < _enemiesPerRow; i++)
         {
             Instantiate(_enemy, transform.position + Vector3.right * i *3 - (Vector3.right * _enemiesPerRow * 3)/2, Quaternion.identity, transform);
+        }
+    }
+
+    public void DestroyAllEnemies()
+    {
+        foreach(Transform enemy in transform)
+        {
+            Destroy(enemy.gameObject);
         }
     }
 }

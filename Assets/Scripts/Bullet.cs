@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour {
         {
             Destroy(other.gameObject);
             Debug.Log("Destroy Enemy");
+            GameManager.Instance.NewEnemyDestroyed();
         }
     }
 }

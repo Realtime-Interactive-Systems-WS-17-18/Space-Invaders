@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
         if(other.tag == "Ground")
         {
             Debug.Log("Lost 1 Health");
+            GameManager.Instance.EnemyReachedGround();
         }
     }
 }
